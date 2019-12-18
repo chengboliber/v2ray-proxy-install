@@ -1,0 +1,51 @@
+{
+    "log":{
+        "loglevel":"debug"
+    },
+    "inbound":{
+        "port":1080,
+        "listen":"127.0.0.1",
+        "protocol":"socks",
+        "settings":{
+            "auth":"noauth",
+            "udp":false
+        }
+    },
+   "inboundDetour": [
+   	 {
+   	     "port": 8123,
+   	     "listen": "127.0.0.1",
+   	     "protocol": "http",
+  	      "settings": {}
+  	  }
+    ],
+    "outbound":{
+        "protocol":"vmess",
+        "settings":{
+            "vnext":[
+                {
+                    "address":"**********",
+                    "port":443,
+                    "users":[
+                        {
+                            "id":"***************",
+                            "Level":1,
+                            "alterId":64,
+                            "security": "auto"
+                        }
+                    ]
+                }
+            ]
+        },
+        "streamSettings":{
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": {
+				"serverName": "***************" 
+       	    },
+       	    "wsSettings": {
+            "path": "/9ead"
+            }
+        }
+    }	
+}
